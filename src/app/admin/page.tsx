@@ -7,13 +7,19 @@ import {
 } from "@/components/ui/card";
 import prisma from "@/lib/prisma";
 
-function getSalesData() {
-  prisma.order.aggregate({
+async function getSalesData() {
+  const data = await prisma.order.aggregate({
     _sum: { pricePaidInCents: true },
+    _count: true,
   });
+  return {
+    amount: (data._sum.pricePaidInCents || 0) / 100,
+    noOfSales: data._count,
+  };
 }
 
-export default function AdminDashboard() {
+export default async function AdminDashboard() {
+  const salesData = await getSalesData();
   return (
     <div className="flex w-full ">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-10 w-full">
