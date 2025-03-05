@@ -5,6 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { formatCurrency, formatNumber } from "@/lib/formatter";
 import prisma from "@/lib/prisma";
 
 async function getSalesData() {
@@ -19,11 +20,11 @@ async function getSalesData() {
 }
 
 export default async function AdminDashboard() {
-  const salesData = await getSalesData();
+  const saletsData = await getSalesData();
   return (
     <div className="flex w-full ">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-10 w-full">
-        <CardDesign title="sales" subtitle="desc" content="content" />
+        <CardDesign title="sales" subtitle={`${formatNumber( saletsData.noOfSales)} Orders`} content={formatCurrency(saletsData.amount)} />
         <CardDesign title="sales" subtitle="desc" content="content" />
         <CardDesign title="sales" subtitle="desc" content="content" />
       </div>

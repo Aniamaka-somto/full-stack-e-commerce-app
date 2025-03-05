@@ -9,7 +9,7 @@ export default function AdminLayout({
       <Nav>
         <Navlink href="/admin">Dashboard</Navlink>
         <Navlink href="/admin/products">product</Navlink>
-        <Navlink href="/admin/customer">Cart</Navlink>
+        <Navlink href="/admin/customer">Customer</Navlink>
         <Navlink href="/admin/sales">Sales</Navlink>
       </Nav>
 

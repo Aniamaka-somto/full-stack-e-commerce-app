@@ -3,9 +3,11 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ComponentProps, ReactNode } from "react";
+import { ComponentProps, ReactNode, useState } from "react";
+
 
 export function Nav({ children }: { children: ReactNode }) {
+  const [navOpen, setNavOpen] = useState (false);
   return (
     <nav className="flex justify-center px-4 bg-primary text-primary-foreground">
       {children}
